@@ -32,9 +32,7 @@ public class Agent {
     {
         if (lot.getStatus() == LotStatus.AVAILABLE || lot.getStatus() == LotStatus.RESERVED)
         {
-            Transaction t = new Transaction(client, lot, payment);
-            t.process();
-            return t;
+            // WIP
         }
         return null;
     }
