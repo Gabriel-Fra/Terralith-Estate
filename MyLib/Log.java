@@ -1,18 +1,51 @@
 package MyLib;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Log {
-    private int[] availableLots;
-    private int[] occupiedLots;
+    private static final List<Log> logEntries = new ArrayList<>();
 
-    public void compile() {
+    private LocalDate timestamp;
+    private String details;
+    private String transactionId;
 
+    public Log(String transactionId, String details)
+    {
+        this.transactionId = transactionId;
+        this.details = details;
+        this.timestamp = LocalDate.now();
     }
 
-    public void displayReport() {
-
+    public static void record(String transactionId, String details)
+    {
+        logEntries.add(new Log(transactionId, details));
     }
 
-    public void generateReport() {
-        
+    public static List<Log> getAll()
+    {
+        return logEntries;
+    }
+
+    public LocalDate getTimestamp()
+    {
+        return timestamp;
+    }
+
+    public String getDetails()
+    {
+        return details;
+    }
+
+    public String getTransactionId()
+    {
+        return transactionId;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("[%s] %s - %s", timestamp, transactionId, details);
     }
 }

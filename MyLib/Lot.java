@@ -4,8 +4,88 @@ public class Lot {
     private int lotNumber;
     private double area;
     private double price;
-    private String status;
-    private String template;
-    private String owner;
+    private LotStatus status;
+    private String lotType;
+    private Client owner;
     private Reservation reservation;
+
+    public Lot(int lotNumber, double area, double price)
+    {
+        this.lotNumber = lotNumber;
+        this.area = area;
+        this.price = price;
+        this.status = LotStatus.AVAILABLE;
+        this.lotType = "Residential";
+    }
+
+    public int getLotNumber()
+    {
+        return lotNumber;
+    }
+
+    public double getArea()
+    {
+        return area;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public LotStatus getStatus()
+    {
+        return status;
+    }
+
+    public String getLotType()
+    {
+        return lotType;
+    }
+
+    public Client getOwner()
+    {
+        return owner;
+    }
+
+    public Reservation getReservation()
+    {
+        return reservation;
+    }
+
+    public void setArea(double area)
+    {
+        this.area = area;
+    }
+
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+
+    public void setStatus(LotStatus status)
+    {
+        this.status = status;
+    }
+
+    public void setLotType(String lotType)
+    {
+        this.lotType = lotType;
+    }
+
+    public void updateOwner(Client owner)
+    {
+        this.owner = owner;
+    }
+
+    public void setReservation(Reservation res)
+    {
+        this.reservation = res;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("Lot %d | %.1f sqm | PHP %.2f | %s", lotNumber, area, price, status);
+    }
 }
