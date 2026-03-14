@@ -1,6 +1,6 @@
 package MyLib;
 
-public class Report {
+public class Log {
     private int[] availableLots;
     private int[] occupiedLots;
 
