@@ -26,14 +26,14 @@ public class Agency {
     {
         if (instance == null)
         {
-            instance = new Agency("Sunshine Realty");
+            instance = new Agency("Terralith Estate");
         }
         return instance;
     }
 
     private void seedData()
     {
-        properties.add(new Property("Sunshine Village Subdivision"));
+        properties.add(new Property("Terralith Estate"));
         agents.add(new Agent("Maria Santos", "09171234567", 0.05));
         agents.add(new Agent("Jose Reyes", "09181234567", 0.04));
         agents.add(new Agent("Ana Cruz", "09191234567", 0.045));
