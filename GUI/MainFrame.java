@@ -130,10 +130,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void GenReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenReportActionPerformed
         // TODO add your handling code here:
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_GenReportActionPerformed
 
     private void LogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_LogActionPerformed
 
     /**
