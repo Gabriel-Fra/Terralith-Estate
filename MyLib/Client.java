@@ -3,7 +3,8 @@ package MyLib;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Client
+{
     private String name;
     private String contactInfo;
     private Payment paymentType;
@@ -23,9 +24,9 @@ public class Client {
 
     public void reserveLot(Lot lot, Agent agent)
     {
-        if (lot.getStatus() == LotStatus.AVAILABLE)
+        if (lot.getStatus().equals(Lot.AVAILABLE))
         {
-            lot.setStatus(LotStatus.RESERVED);
+            lot.setStatus(Lot.RESERVED);
             lot.updateOwner(this);
             lots.add(lot);
             Reservation res = new Reservation(this, agent);

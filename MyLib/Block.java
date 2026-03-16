@@ -3,7 +3,8 @@ package MyLib;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Block {
+public class Block
+{
     private int blockNumber;
     private List<Lot> lots;
     private List<Agent> assignedAgents;
@@ -31,7 +32,7 @@ public class Block {
         List<Lot> available = new ArrayList<>();
         for (Lot lot : lots)
         {
-            if (lot.getStatus() == LotStatus.AVAILABLE)
+            if (lot.getStatus().equals(Lot.AVAILABLE))
             {
                 available.add(lot);
             }

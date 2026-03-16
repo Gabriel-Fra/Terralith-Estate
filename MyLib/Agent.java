@@ -3,7 +3,8 @@ package MyLib;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Agent {
+public class Agent
+{
     private String name;
     private String contactInfo;
     private double commissionRate;
@@ -20,7 +21,7 @@ public class Agent {
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots)
         {
-            if (lot.getArea() >= minArea && lot.getPrice() <= maxPrice && lot.getStatus() == LotStatus.AVAILABLE)
+            if (lot.getArea() >= minArea && lot.getPrice() <= maxPrice && lot.getStatus().equals(Lot.AVAILABLE))
             {
                 result.add(lot);
             }
@@ -30,7 +31,7 @@ public class Agent {
 
     public Transaction processSelling(Client client, Lot lot, Payment payment)
     {
-        if (lot.getStatus() == LotStatus.AVAILABLE || lot.getStatus() == LotStatus.RESERVED)
+        if (lot.getStatus().equals(Lot.AVAILABLE) || lot.getStatus().equals(Lot.RESERVED))
         {
             Transaction t = new Transaction(client, lot, payment);
             t.process();

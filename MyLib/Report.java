@@ -3,7 +3,8 @@ package MyLib;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Report {
+public class Report
+{
     private List<Lot> availableLots;
     private List<Lot> occupiedLots;
     private Property property;
@@ -21,7 +22,7 @@ public class Report {
         occupiedLots.clear();
         for (Lot lot : property.getAllLots())
         {
-            if (lot.getStatus() == LotStatus.AVAILABLE)
+            if (lot.getStatus().equals(Lot.AVAILABLE))
             {
                 availableLots.add(lot);
             }

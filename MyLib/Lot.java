@@ -1,10 +1,15 @@
 package MyLib;
 
-public class Lot {
+public class Lot
+{
+    public static final String AVAILABLE = "AVAILABLE";
+    public static final String RESERVED = "RESERVED";
+    public static final String SOLD = "SOLD";
+
     private int lotNumber;
     private double area;
     private double price;
-    private LotStatus status;
+    private String status;
     private String lotType;
     private Client owner;
     private Reservation reservation;
@@ -14,7 +19,7 @@ public class Lot {
         this.lotNumber = lotNumber;
         this.area = area;
         this.price = price;
-        this.status = LotStatus.AVAILABLE;
+        this.status = AVAILABLE;
         this.lotType = "Residential";
     }
 
@@ -33,7 +38,7 @@ public class Lot {
         return price;
     }
 
-    public LotStatus getStatus()
+    public String getStatus()
     {
         return status;
     }
@@ -63,7 +68,7 @@ public class Lot {
         this.price = price;
     }
 
-    public void setStatus(LotStatus status)
+    public void setStatus(String status)
     {
         this.status = status;
     }
