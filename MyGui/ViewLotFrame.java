@@ -55,6 +55,7 @@ public class ViewLotFrame extends javax.swing.JFrame {
                     "Block " + block.getBlockNumber(),
                     lot.getLotNumber(),
                     lot.getModelName(),
+                    lot.getArea() + " sqm",
                     String.format("%,.2f", lot.getTotalContractPrice()),
                     lot.getStatus(),
                     lot.getOwner() != null ? lot.getOwner().getName() : "None"
@@ -92,7 +93,7 @@ public class ViewLotFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Block", "Lot", "Model", "Price (PHP)", "Status", "Owner"
+                "Block", "Lot", "Model", "Area (sqm)", "Price (PHP)", "Status", "Owner"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
