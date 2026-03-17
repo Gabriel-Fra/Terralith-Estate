@@ -7,6 +7,7 @@ public class Block
 {
     private int blockNumber;
     private String modelName;
+    private double area;
     private double totalContractPrice;
     private double downPaymentPercent;
     private int downPaymentTermMonths;
@@ -15,10 +16,11 @@ public class Block
     private List<Lot> lots;
     private List<Agent> assignedAgents;
 
-    public Block(int blockNumber, String modelName, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
+    public Block(int blockNumber, String modelName, double area, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
     {
         this.blockNumber = blockNumber;
         this.modelName = modelName;
+        this.area = area;
         this.totalContractPrice = totalContractPrice;
         this.downPaymentPercent = downPaymentPercent;
         this.downPaymentTermMonths = downPaymentTermMonths;
@@ -33,7 +35,7 @@ public class Block
     {
         for (int i = 1; i <= 20; i++)
         {
-            lots.add(new Lot(i, modelName, totalContractPrice, downPaymentPercent, downPaymentTermMonths, reservationFee, interestRate));
+            lots.add(new Lot(i, area, modelName, totalContractPrice, downPaymentPercent, downPaymentTermMonths, reservationFee, interestRate));
         }
     }
 

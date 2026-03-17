@@ -17,20 +17,20 @@ public class Property
 
     private void initializeBlocks()
     {
-        // Block 1 - Lia: TCP 3,628,000 | 15% DP | 24 months | Res 15,000 | 7.5%
-        blocks.add(new Block(1, "Lia", 3628000, 0.15, 24, 15000, 0.075));
+        // Block 1 - Lia: 50 sqm | TCP 3,628,000 | 15% DP | 24 months | Res 15,000 | 7.5%
+        blocks.add(new Block(1, "Lia", 50, 3628000, 0.15, 24, 15000, 0.075));
 
-        // Block 2 - Alice: TCP 2,783,000 | 5% DP | 12 months | Res 15,000 | 7%
-        blocks.add(new Block(2, "Alice", 2783000, 0.05, 12, 15000, 0.07));
+        // Block 2 - Alice: 50 sqm | TCP 2,783,000 | 5% DP | 12 months | Res 15,000 | 7%
+        blocks.add(new Block(2, "Alice", 50, 2783000, 0.05, 12, 15000, 0.07));
 
-        // Block 3 - Thea: TCP 3,915,400 | 5% DP | 9 months | Res 15,000 | 7%
-        blocks.add(new Block(3, "Thea", 3915400, 0.05, 9, 15000, 0.07));
+        // Block 3 - Thea: 50 sqm | TCP 3,915,400 | 5% DP | 9 months | Res 15,000 | 7%
+        blocks.add(new Block(3, "Thea", 50, 3915400, 0.05, 9, 15000, 0.07));
 
-        // Block 4 - Aira with Balcony: TCP 8,144,720 | 5% DP | 12 months | Res 40,000 | 7%
-        blocks.add(new Block(4, "Aira with Balcony", 8144720, 0.05, 12, 40000, 0.07));
+        // Block 4 - Aira with Balcony: 120 sqm | TCP 8,144,720 | 5% DP | 12 months | Res 40,000 | 7%
+        blocks.add(new Block(4, "Aira with Balcony", 120, 8144720, 0.05, 12, 40000, 0.07));
 
-        // Block 5 - Lia: TCP 3,628,000 | 15% DP | 24 months | Res 15,000 | 7.5%
-        blocks.add(new Block(5, "Lia", 3628000, 0.15, 24, 15000, 0.075));
+        // Block 5 - Lia: 50 sqm | TCP 3,628,000 | 15% DP | 24 months | Res 15,000 | 7.5%
+        blocks.add(new Block(5, "Lia", 50, 3628000, 0.15, 24, 15000, 0.075));
     }
 
     public List<Lot> getAvailableLots()

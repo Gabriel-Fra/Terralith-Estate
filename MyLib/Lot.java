@@ -7,6 +7,7 @@ public class Lot
     public static final String SOLD = "SOLD";
 
     private int lotNumber;
+    private double area;
     private String modelName;
     private double totalContractPrice;
     private double downPaymentPercent;
@@ -17,9 +18,10 @@ public class Lot
     private Client owner;
     private Reservation reservation;
 
-    public Lot(int lotNumber, String modelName, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
+    public Lot(int lotNumber, double area, String modelName, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
     {
         this.lotNumber = lotNumber;
+        this.area = area;
         this.modelName = modelName;
         this.totalContractPrice = totalContractPrice;
         this.downPaymentPercent = downPaymentPercent;
@@ -68,6 +70,11 @@ public class Lot
     public int getLotNumber()
     {
         return lotNumber;
+    }
+
+    public double getArea()
+    {
+        return area;
     }
 
     public String getModelName()
@@ -140,6 +147,6 @@ public class Lot
     @Override
     public String toString()
     {
-        return String.format("Lot %d | %s | PHP %,.2f | %s", lotNumber, modelName, totalContractPrice, status);
+        return String.format("Lot %d | %s | %.1f sqm | PHP %,.2f | %s", lotNumber, modelName, area, totalContractPrice, status);
     }
 }
