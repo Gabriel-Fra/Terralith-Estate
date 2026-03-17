@@ -6,12 +6,24 @@ import java.util.List;
 public class Block
 {
     private int blockNumber;
+    private String modelName;
+    private double totalContractPrice;
+    private double downPaymentPercent;
+    private int downPaymentTermMonths;
+    private double reservationFee;
+    private double interestRate;
     private List<Lot> lots;
     private List<Agent> assignedAgents;
 
-    public Block(int blockNumber)
+    public Block(int blockNumber, String modelName, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
     {
         this.blockNumber = blockNumber;
+        this.modelName = modelName;
+        this.totalContractPrice = totalContractPrice;
+        this.downPaymentPercent = downPaymentPercent;
+        this.downPaymentTermMonths = downPaymentTermMonths;
+        this.reservationFee = reservationFee;
+        this.interestRate = interestRate;
         this.lots = new ArrayList<>();
         this.assignedAgents = new ArrayList<>();
         initializeLots();
@@ -21,9 +33,7 @@ public class Block
     {
         for (int i = 1; i <= 20; i++)
         {
-            double area = 100.0 + (i % 5) * 20;
-            double price = area * 15000;
-            lots.add(new Lot(i, area, price));
+            lots.add(new Lot(i, modelName, totalContractPrice, downPaymentPercent, downPaymentTermMonths, reservationFee, interestRate));
         }
     }
 
@@ -55,6 +65,11 @@ public class Block
     public int getBlockNumber()
     {
         return blockNumber;
+    }
+
+    public String getModelName()
+    {
+        return modelName;
     }
 
     public List<Lot> getLots()

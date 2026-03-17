@@ -37,20 +37,22 @@ public class Report
     {
         compile();
         StringBuilder sb = new StringBuilder();
-        sb.append("===== REAL ESTATE SALES REPORT =====\n");
+        sb.append("===== TERRALITH ESTATE - SALES REPORT =====\n");
         sb.append("Property: ").append(property.getPropertyName()).append("\n\n");
 
         for (Block block : property.getBlocks())
         {
-            sb.append("--- Block ").append(block.getBlockNumber()).append(" ---\n");
+            sb.append("--- Block ").append(block.getBlockNumber())
+              .append(" (").append(block.getModelName()).append(") ---\n");
+
             for (Lot lot : block.getLots())
             {
                 sb.append(String.format(
-                    "  Lot %-3d | %-12s | %6.1f sqm | PHP %,10.2f | Owner: %s\n",
+                    "  Lot %-3d | %-20s | PHP %,12.2f | %-10s | Owner: %s\n",
                     lot.getLotNumber(),
+                    lot.getModelName(),
+                    lot.getTotalContractPrice(),
                     lot.getStatus(),
-                    lot.getArea(),
-                    lot.getPrice(),
                     lot.getOwner() != null ? lot.getOwner().getName() : "None"
                 ));
             }

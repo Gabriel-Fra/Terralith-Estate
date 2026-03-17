@@ -16,12 +16,12 @@ public class Agent
         this.commissionRate = commissionRate;
     }
 
-    public List<Lot> filterLots(List<Lot> lots, double minArea, double maxPrice)
+    public List<Lot> filterLots(List<Lot> lots, double maxPrice)
     {
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots)
         {
-            if (lot.getArea() >= minArea && lot.getPrice() <= maxPrice && lot.getStatus().equals(Lot.AVAILABLE))
+            if (lot.getPrice() <= maxPrice && lot.getStatus().equals(Lot.AVAILABLE))
             {
                 result.add(lot);
             }
