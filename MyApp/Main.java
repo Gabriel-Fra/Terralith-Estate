@@ -7,10 +7,10 @@ import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() ->
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new AdminLoginFrame().setVisible(true);
             }
-        ); 
+        });
     }
 }
