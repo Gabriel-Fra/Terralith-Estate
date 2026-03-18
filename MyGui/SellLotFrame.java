@@ -50,12 +50,12 @@ public class SellLotFrame extends javax.swing.JFrame {
         lot = new javax.swing.JComboBox<>();
         agent = new javax.swing.JComboBox<>();
         payment = new javax.swing.JComboBox<>();
-        discount = new javax.swing.JTextField();
         sell = new javax.swing.JButton();
         close = new javax.swing.JButton();
         txtDuration = new javax.swing.JLabel();
-        Duration = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        discount = new javax.swing.JComboBox<>();
+        Duration = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +74,7 @@ public class SellLotFrame extends javax.swing.JFrame {
         txtDiscount.setText("Discount Rate:");
 
         block.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Block 1", "Block 2", "Block 3", "Block 4", "Block 5", " " }));
+        block.addActionListener(this::blockActionPerformed);
 
         lot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -81,8 +82,6 @@ public class SellLotFrame extends javax.swing.JFrame {
 
         payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Installment", " " }));
         payment.addActionListener(this::paymentActionPerformed);
-
-        lot.addActionListener(this::lotActionPerformed);
 
         sell.setBackground(new java.awt.Color(0, 102, 0));
         sell.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -100,6 +99,10 @@ public class SellLotFrame extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyGui/Images/Logo.png"))); // NOI18N
         jLabel7.setText("jLabel7");
+
+        discount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1%", "2%", "3%", "5%", "10%" }));
+
+        Duration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5 years", "10 years", "15 years", "20 years ", "25 years", "30 years" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,12 +125,12 @@ public class SellLotFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contact)
                             .addComponent(block, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(discount)
                             .addComponent(agent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(payment, 0, 302, Short.MAX_VALUE)
-                            .addComponent(Duration)
                             .addComponent(name)
-                            .addComponent(lot, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lot, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(discount, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Duration, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,6 +209,9 @@ public class SellLotFrame extends javax.swing.JFrame {
         processSale();
     }//GEN-LAST:event_sellActionPerformed
 
+    private void blockActionPerformed(java.awt.event.ActionEvent evt) {
+        loadLots();
+    }
     /**
      * @param args the command line arguments
      */
@@ -232,12 +238,12 @@ public class SellLotFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Duration;
+    private javax.swing.JComboBox<String> Duration;
     private javax.swing.JComboBox<String> agent;
     private javax.swing.JComboBox<String> block;
     private javax.swing.JButton close;
     private javax.swing.JTextField contact;
-    private javax.swing.JTextField discount;
+    private javax.swing.JComboBox<String> discount;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -381,7 +387,8 @@ public class SellLotFrame extends javax.swing.JFrame {
 
             if ("Cash".equals(payment.getSelectedItem())) {
                 // Cash: user enters a discount rate (e.g. 0.05 = 5%)
-                double discRate = Double.parseDouble(discount.getText().trim());
+                String discStr = (String) discount.getSelectedItem();
+                double discRate = Double.parseDouble(discStr.replace("%", "")) / 100.0;
                 paymentMethod = new Cash(
                     selectedLot.getTotalContractPrice(),
                     selectedLot.getReservationFee(),
@@ -392,7 +399,8 @@ public class SellLotFrame extends javax.swing.JFrame {
             } else {
                 // Installment: duration in months entered by user
                 // Interest rate is fixed from the lot (from PDF data)
-                int months = Integer.parseInt(Duration.getText().trim());
+                String durStr = (String) Duration.getSelectedItem();
+                int months = Integer.parseInt(durStr.split(" ")[0]) * 12;
                 paymentMethod = new Installment(
                     selectedLot.getLoanableAmount(),
                     selectedLot.getReservationFee(),
