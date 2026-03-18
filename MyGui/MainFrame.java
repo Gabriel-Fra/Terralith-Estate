@@ -15,10 +15,41 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    
     public MainFrame() {
+        this("ADMIN", "Admin");
+    }
+    
+    public MainFrame(String role, String username) {
         setTitle("Terralith Estate");
         initComponents();
         setLocationRelativeTo(null);
+        applyRole(role, username);
+    }
+    
+    private void applyRole(String role, String username) {
+        switch (role) {
+            case "GUEST":
+                // Guest/Client: View Lots only
+                ReserveLot.setVisible(false);
+                SellLot.setVisible(false);
+                GenerateReport.setVisible(false);
+                TransactionLog.setVisible(false);
+                PayInstallment.setVisible(false);
+                setTitle("Terralith Estate  —  Guest");
+                break;
+            case "AGENT":
+                // Agent: View, Reserve, Sell, Pay Installment
+                GenerateReport.setVisible(false);
+                TransactionLog.setVisible(false);
+                setTitle("Terralith Estate  —  Agent: " + username);
+                break;
+            case "ADMIN":
+            default:
+                // Admin: full access — nothing hidden
+                setTitle("Terralith Estate  —  Admin");
+                break;
+        }
     }
 
     /**
