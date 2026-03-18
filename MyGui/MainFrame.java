@@ -223,8 +223,13 @@ public class MainFrame extends javax.swing.JFrame {
             "Confirm Logout",
             javax.swing.JOptionPane.YES_NO_OPTION);
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            for (java.awt.Window window : java.awt.Window.getWindows()) {
+                if (window != this) {
+                    window.dispose();
+                }
+            }
             new AdminLoginFrame().setVisible(true);
-            dispose();
+            dispose(); // finally close MainFrame itself
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
