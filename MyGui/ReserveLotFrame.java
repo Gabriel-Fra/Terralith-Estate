@@ -141,6 +141,7 @@ public class ReserveLotFrame extends javax.swing.JFrame {
         jLabel5.setText("Agent:");
 
         cmbBlock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbBlock.addActionListener(this::cmbBlockActionPerformed);
 
         cmbLot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -230,6 +231,10 @@ public class ReserveLotFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         processReservation();
     }//GEN-LAST:event_reserveActionPerformed
+
+    private void cmbBlockActionPerformed(java.awt.event.ActionEvent evt) {
+        loadLots();
+    }
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         // TODO add your handling code here:
