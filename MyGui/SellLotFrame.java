@@ -54,9 +54,7 @@ public class SellLotFrame extends javax.swing.JFrame {
         sell = new javax.swing.JButton();
         close = new javax.swing.JButton();
         txtDuration = new javax.swing.JLabel();
-        txtInterest = new javax.swing.JLabel();
         Duration = new javax.swing.JTextField();
-        Interest = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,8 +96,6 @@ public class SellLotFrame extends javax.swing.JFrame {
 
         txtDuration.setText("Duration (months):");
 
-        txtInterest.setText("Interest Rate:");
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyGui/Images/Logo.png"))); // NOI18N
         jLabel7.setText("jLabel7");
 
@@ -110,43 +106,42 @@ public class SellLotFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtDuration)
-                                    .addComponent(txtInterest))
-                                .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(name)
-                                    .addComponent(discount)
-                                    .addComponent(contact)
-                                    .addComponent(block, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lot, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(agent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(payment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Duration)
-                                    .addComponent(Interest, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(sell, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(contact)
+                            .addComponent(block, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(discount)
+                            .addComponent(agent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(payment, 0, 302, Short.MAX_VALUE)
+                            .addComponent(Duration)
+                            .addComponent(name)
+                            .addComponent(lot, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)))
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(sell, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,15 +175,11 @@ public class SellLotFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDuration)
                     .addComponent(Duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInterest)
-                    .addComponent(Interest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sell, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(96, 96, 96))
+                    .addComponent(sell, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -236,7 +227,6 @@ public class SellLotFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Duration;
-    private javax.swing.JTextField Interest;
     private javax.swing.JComboBox<String> agent;
     private javax.swing.JComboBox<String> block;
     private javax.swing.JButton close;
@@ -255,7 +245,6 @@ public class SellLotFrame extends javax.swing.JFrame {
     private javax.swing.JButton sell;
     private javax.swing.JLabel txtDiscount;
     private javax.swing.JLabel txtDuration;
-    private javax.swing.JLabel txtInterest;
     // End of variables declaration//GEN-END:variables
 
     private void togglePaymentFields() {
@@ -264,18 +253,16 @@ public class SellLotFrame extends javax.swing.JFrame {
         discount.setVisible(isCash);
         txtDuration.setVisible(!isCash);
         Duration.setVisible(!isCash);
-        txtInterest.setVisible(!isCash);
-        Interest.setVisible(!isCash);
     }
     
     private void loadBlocks() {
         block.removeAllItems();
         for (Block b : Agency.getInstance().getMainProperty().getBlocks()) {
             block.addItem("Block " + b.getBlockNumber());
-            }
         }
+    }
 
-        private void loadLots() {
+    private void loadLots() {
         lot.removeAllItems();
 
         if (block.getSelectedItem() == null) {
@@ -286,10 +273,11 @@ public class SellLotFrame extends javax.swing.JFrame {
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
 
         for (Lot l : b.getLots()) {
-            if (l.getStatus() != Lot.SOLD) {
+            if (!l.getStatus().equals(Lot.SOLD)) {
                 lot.addItem("Lot " + l.getLotNumber()
                         + " [" + l.getStatus() + "]"
-                        + " | PHP " + String.format("%.2f", l.getPrice()));
+                        + " | " + l.getModelName()
+                        + " | PHP " + String.format("%,.2f", l.getPrice()));
             }
         }
 
@@ -336,22 +324,30 @@ public class SellLotFrame extends javax.swing.JFrame {
         }
 
         Payment paymentMethod;
-        double resFee = 5000;
-        double closeFee = 3000;
 
         try {
 
             if ("Cash".equals(payment.getSelectedItem())) {
-
-                double disc = Double.parseDouble(discount.getText().trim());
-                paymentMethod = new Cash(selectedLot.getPrice(), resFee, closeFee, disc);
+                // Cash: user enters a discount rate (e.g. 0.05 = 5%)
+                double discRate = Double.parseDouble(discount.getText().trim());
+                paymentMethod = new Cash(
+                    selectedLot.getTotalContractPrice(),
+                    selectedLot.getReservationFee(),
+                    selectedLot.getNetDownPayment(),
+                    discRate
+                );
 
             } else {
-
+                // Installment: duration in months entered by user
+                // Interest rate is fixed from the lot (from PDF data)
                 int months = Integer.parseInt(Duration.getText().trim());
-                double interest = Double.parseDouble(Interest.getText().trim());
-
-                paymentMethod = new Installment(selectedLot.getPrice(), resFee, closeFee, months, interest);
+                paymentMethod = new Installment(
+                    selectedLot.getLoanableAmount(),
+                    selectedLot.getReservationFee(),
+                    selectedLot.getNetDownPayment(),
+                    months,
+                    selectedLot.getInterestRate()
+                );
             }
 
         } catch (NumberFormatException ex) {
@@ -360,21 +356,40 @@ public class SellLotFrame extends javax.swing.JFrame {
         }
 
         Agent selectedAgent = agency.getAgents().get(agent.getSelectedIndex());
-
         Transaction trans = selectedAgent.processSelling(client, selectedLot, paymentMethod);
 
         if (trans != null) {
 
             agency.addTransaction(trans);
 
+            // Build full payment summary based on PDF breakdown
+            String summary =
+                "=== PAYMENT BREAKDOWN ===\n"
+                + String.format("House Model                  : %s\n", selectedLot.getModelName())
+                + String.format("Selling Price                : PHP %,.2f\n", selectedLot.getSellingPrice())
+                + String.format("Add: Legal & Misc Fees (5%%) : PHP %,.2f\n", selectedLot.getLegalAndMiscFees())
+                + String.format("Total Contract Price (TCP)   : PHP %,.2f\n\n", selectedLot.getTotalContractPrice())
+                + "=== SCHEDULE OF PAYMENT ===\n"
+                + String.format("Required Down Payment (%.0f%%) : PHP %,.2f\n", selectedLot.getDownPaymentPercent() * 100, selectedLot.getRequiredDownPayment())
+                + String.format("Less: Reservation Fee        : PHP %,.2f\n", selectedLot.getReservationFee())
+                + String.format("Net Down Payment             : PHP %,.2f\n", selectedLot.getNetDownPayment())
+                + String.format("Monthly Down Payment (%d mos) : PHP %,.2f\n\n", selectedLot.getDownPaymentTermMonths(), selectedLot.getMonthlyDownPayment())
+                + "=== MONTHLY AMORTIZATION @ " + String.format("%.1f%%", selectedLot.getInterestRate() * 100) + " ===\n"
+                + String.format("Loanable Amount    : PHP %,.2f\n", selectedLot.getLoanableAmount())
+                + String.format("30 years           : PHP %,.2f\n", selectedLot.getMonthlyAmortization(30))
+                + String.format("25 years           : PHP %,.2f\n", selectedLot.getMonthlyAmortization(25))
+                + String.format("20 years           : PHP %,.2f\n", selectedLot.getMonthlyAmortization(20))
+                + String.format("15 years           : PHP %,.2f\n", selectedLot.getMonthlyAmortization(15))
+                + String.format("10 years           : PHP %,.2f\n", selectedLot.getMonthlyAmortization(10))
+                + String.format("5 years            : PHP %,.2f\n", selectedLot.getMonthlyAmortization(5));
+
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Sale Successful!\n"
                     + "Transaction ID: " + trans.getTransactionId() + "\n\n"
-                    + paymentMethod.getPaymentSummary());
+                    + summary);
 
             name.setText("");
             contact.setText("");
-
             loadLots();
 
         } else {

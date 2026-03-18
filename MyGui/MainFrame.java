@@ -67,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         ReserveLot.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ReserveLot.setText("Reserve a Lot");
+        ReserveLot.addActionListener(this::ReserveLotActionPerformed);
 
         SellLot.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         SellLot.setText("Sell a Lot");
@@ -142,8 +143,13 @@ public class MainFrame extends javax.swing.JFrame {
         new SellLotFrame().setVisible(true);
     }//GEN-LAST:event_SellLotActionPerformed
 
+    private void ReserveLotActionPerformed(java.awt.event.ActionEvent evt) {
+        new ReserveLotFrame().setVisible(true);
+    }
+
     private void TransactionLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionLogActionPerformed
         // TODO add your handling code here:
+        new TransactionLogFrame().setVisible(true);
     }//GEN-LAST:event_TransactionLogActionPerformed
 
     private void ViewLotsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewLotsActionPerformed

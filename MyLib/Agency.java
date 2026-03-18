@@ -34,9 +34,11 @@ public class Agency {
     private void seedData()
     {
         properties.add(new Property("Terralith Estate"));
-        agents.add(new Agent("Maria Santos", "09171234567", 0.05));
-        agents.add(new Agent("Jose Reyes", "09181234567", 0.04));
-        agents.add(new Agent("Ana Cruz", "09191234567", 0.045));
+        agents.add(new Agent("Rendouz Serrano", "09171234567", 0.05));
+        agents.add(new Agent("McJaylord Goleña", "09181234567", 0.04));
+        agents.add(new Agent("Chen Brigino", "09191234567", 0.045));
+        agents.add(new Agent("Gabriel Sioson", "09301623877", 0.05));
+        agents.add(new Agent("Steven Casio", "09214536767", 0.045));
     }
 
     public Report generateReport()

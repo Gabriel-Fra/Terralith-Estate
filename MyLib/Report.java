@@ -42,8 +42,7 @@ public class Report
 
         for (Block block : property.getBlocks())
         {
-            sb.append("--- Block ").append(block.getBlockNumber())
-              .append(" (").append(block.getModelName()).append(") ---\n");
+            sb.append("--- Block ").append(block.getBlockNumber()).append(" ---\n");
 
             for (Lot lot : block.getLots())
             {

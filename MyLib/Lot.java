@@ -6,10 +6,12 @@ public class Lot
     public static final String RESERVED = "RESERVED";
     public static final String SOLD = "SOLD";
 
+    private static final double LEGAL_MISC_RATE = 0.05;
+
     private int lotNumber;
     private double area;
     private String modelName;
-    private double totalContractPrice;
+    private double sellingPrice;
     private double downPaymentPercent;
     private int downPaymentTermMonths;
     private double reservationFee;
@@ -18,12 +20,12 @@ public class Lot
     private Client owner;
     private Reservation reservation;
 
-    public Lot(int lotNumber, double area, String modelName, double totalContractPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
+    public Lot(int lotNumber, double area, String modelName, double sellingPrice, double downPaymentPercent, int downPaymentTermMonths, double reservationFee, double interestRate)
     {
         this.lotNumber = lotNumber;
         this.area = area;
         this.modelName = modelName;
-        this.totalContractPrice = totalContractPrice;
+        this.sellingPrice = sellingPrice;
         this.downPaymentPercent = downPaymentPercent;
         this.downPaymentTermMonths = downPaymentTermMonths;
         this.reservationFee = reservationFee;
@@ -31,11 +33,23 @@ public class Lot
         this.status = AVAILABLE;
     }
 
+    // --- TCP Computation ---
+
+    public double getLegalAndMiscFees()
+    {
+        return sellingPrice * LEGAL_MISC_RATE;
+    }
+
+    public double getTotalContractPrice()
+    {
+        return sellingPrice + getLegalAndMiscFees();
+    }
+
     // --- Pag-IBIG Computations ---
 
     public double getRequiredDownPayment()
     {
-        return totalContractPrice * downPaymentPercent;
+        return getTotalContractPrice() * downPaymentPercent;
     }
 
     public double getNetDownPayment()
@@ -50,7 +64,7 @@ public class Lot
 
     public double getLoanableAmount()
     {
-        return totalContractPrice - getRequiredDownPayment();
+        return getTotalContractPrice() - getRequiredDownPayment();
     }
 
     public double getMonthlyAmortization(int loanTermYears)
@@ -82,14 +96,14 @@ public class Lot
         return modelName;
     }
 
-    public double getPrice()
+    public double getSellingPrice()
     {
-        return totalContractPrice;
+        return sellingPrice;
     }
 
-    public double getTotalContractPrice()
+    public double getPrice()
     {
-        return totalContractPrice;
+        return getTotalContractPrice();
     }
 
     public double getDownPaymentPercent()
@@ -147,6 +161,6 @@ public class Lot
     @Override
     public String toString()
     {
-        return String.format("Lot %d | %s | %.1f sqm | PHP %,.2f | %s", lotNumber, modelName, area, totalContractPrice, status);
+        return String.format("Lot %d | %s | %.1f sqm | PHP %,.2f | %s", lotNumber, modelName, area, getTotalContractPrice(), status);
     }
 }
