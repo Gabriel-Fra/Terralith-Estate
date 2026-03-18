@@ -5,6 +5,7 @@ public class Installment extends Payment{
     private double balance;
     private double interestRate;
     private double amortization;
+    private int monthsPaid;
 
     public Installment(double price, double reservationFee, double closingFee, int durationMonths, double interestRate)
     {
@@ -13,6 +14,7 @@ public class Installment extends Payment{
         this.interestRate = interestRate;
         this.balance = price;
         this.amortization = computeAmortization();
+        this.monthsPaid = 0;
     }
 
     private double computeAmortization()
@@ -39,6 +41,30 @@ public class Installment extends Payment{
             price, reservationFee, closingFee, durationMonths,
             interestRate * 100, amortization, getTotalDue()
         );
+    }
+
+    public boolean makePayment()
+    {
+        if (balance <= 0) return false;
+        balance -= amortization;
+        if (balance < 0) balance = 0;
+        monthsPaid++;
+        return true;
+    }
+
+    public int getRemainingMonths()
+    {
+        return durationMonths - monthsPaid;
+    }
+
+    public int getMonthsPaid()
+    {
+        return monthsPaid;
+    }
+
+    public boolean isFullyPaid()
+    {
+        return balance <= 0;
     }
 
     public void checkBalance()

@@ -99,4 +99,16 @@ public class Agency {
         }
         return null;
     }
+
+    public Transaction findTransactionByLot(Lot lot)
+    {
+        for (Transaction t : transactions)
+        {
+            if (t.getLot() == lot)
+            {
+                return t;
+            }
+        }
+        return null;
+    }
 }

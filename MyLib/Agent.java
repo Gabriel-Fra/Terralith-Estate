@@ -31,12 +31,24 @@ public class Agent
 
     public Transaction processSelling(Client client, Lot lot, Payment payment)
     {
-        if (lot.getStatus().equals(Lot.AVAILABLE) || lot.getStatus().equals(Lot.RESERVED))
+        if (lot.getStatus().equals(Lot.AVAILABLE))
         {
             Transaction t = new Transaction(client, lot, payment);
             t.process();
             return t;
         }
+
+        if (lot.getStatus().equals(Lot.RESERVED))
+        {
+            if (lot.getOwner() != null && lot.getOwner().getName().equalsIgnoreCase(client.getName()))
+            {
+                Transaction t = new Transaction(client, lot, payment);
+                t.process();
+                return t;
+            }
+            return null; // Different client cannot buy a reserved lot
+        }
+
         return null;
     }
 

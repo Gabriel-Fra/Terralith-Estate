@@ -40,6 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
         SellLot = new javax.swing.JButton();
         GenerateReport = new javax.swing.JButton();
         TransactionLog = new javax.swing.JButton();
+        PayInstallment = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,6 +82,10 @@ public class MainFrame extends javax.swing.JFrame {
         TransactionLog.setText("Transaction Log");
         TransactionLog.addActionListener(this::TransactionLogActionPerformed);
 
+        PayInstallment.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        PayInstallment.setText("Pay Installment");
+        PayInstallment.addActionListener(this::PayInstallmentActionPerformed);
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -91,6 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(SellLot, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(GenerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(TransactionLog, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PayInstallment, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +109,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(GenerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(TransactionLog, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TransactionLog, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PayInstallment, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,6 +153,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void ReserveLotActionPerformed(java.awt.event.ActionEvent evt) {
         new ReserveLotFrame().setVisible(true);
+    }
+
+    private void PayInstallmentActionPerformed(java.awt.event.ActionEvent evt) {
+        new PayInstallmentFrame().setVisible(true);
     }
 
     private void TransactionLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionLogActionPerformed
@@ -190,6 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerateReport;
     private javax.swing.JPanel Menu;
+    private javax.swing.JButton PayInstallment;
     private javax.swing.JButton ReserveLot;
     private javax.swing.JButton SellLot;
     private javax.swing.JButton TransactionLog;

@@ -82,6 +82,8 @@ public class SellLotFrame extends javax.swing.JFrame {
         payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Installment", " " }));
         payment.addActionListener(this::paymentActionPerformed);
 
+        lot.addActionListener(this::lotActionPerformed);
+
         sell.setBackground(new java.awt.Color(0, 102, 0));
         sell.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         sell.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +197,10 @@ public class SellLotFrame extends javax.swing.JFrame {
         togglePaymentFields();
     }//GEN-LAST:event_paymentActionPerformed
 
+    private void lotActionPerformed(java.awt.event.ActionEvent evt) {
+        autoFillReserver();
+    }
+
     private void sellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellActionPerformed
         // TODO add your handling code here:
         processSale();
@@ -263,9 +269,13 @@ public class SellLotFrame extends javax.swing.JFrame {
     }
 
     private void loadLots() {
+        // Temporarily remove listener to avoid firing during repopulation
+        lot.removeActionListener(this::lotActionPerformed);
         lot.removeAllItems();
 
         if (block.getSelectedItem() == null) {
+            lot.addActionListener(this::lotActionPerformed);
+            resetNameField();
             return;
         }
 
@@ -274,15 +284,57 @@ public class SellLotFrame extends javax.swing.JFrame {
 
         for (Lot l : b.getLots()) {
             if (!l.getStatus().equals(Lot.SOLD)) {
-                lot.addItem("Lot " + l.getLotNumber()
+                String label = "Lot " + l.getLotNumber()
                         + " [" + l.getStatus() + "]"
                         + " | " + l.getModelName()
-                        + " | PHP " + String.format("%,.2f", l.getPrice()));
+                        + " | PHP " + String.format("%,.2f", l.getPrice());
+
+                if (l.getStatus().equals(Lot.RESERVED) && l.getOwner() != null) {
+                    label += " | Reserved by: " + l.getOwner().getName();
+                }
+
+                lot.addItem(label);
             }
         }
 
         if (lot.getItemCount() == 0) {
             lot.addItem("No lots available");
+        }
+
+        // Re-attach listener then manually trigger
+        lot.addActionListener(this::lotActionPerformed);
+        autoFillReserver();
+    }
+
+    private void resetNameField() {
+        name.setText("");
+        name.setEditable(true);
+    }
+
+    private void autoFillReserver() {
+        if (lot.getSelectedItem() == null
+                || lot.getSelectedItem().toString().startsWith("No")) {
+            resetNameField();
+            return;
+        }
+
+        try {
+            int blockNum = block.getSelectedIndex() + 1;
+            Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
+            String lotText = (String) lot.getSelectedItem();
+            int lotNum = Integer.parseInt(lotText.split(" ")[1]);
+            Lot selectedLot = b.getLot(lotNum);
+
+            if (selectedLot != null
+                    && selectedLot.getStatus().equals(Lot.RESERVED)
+                    && selectedLot.getOwner() != null) {
+                name.setText(selectedLot.getOwner().getName());
+                name.setEditable(false);
+            } else {
+                resetNameField();
+            }
+        } catch (NumberFormatException e) {
+            resetNameField();
         }
     }
         
@@ -389,11 +441,18 @@ public class SellLotFrame extends javax.swing.JFrame {
                     + summary);
 
             name.setText("");
+            name.setEditable(true);
             contact.setText("");
             loadLots();
 
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Lot is already sold.");
+            if (selectedLot.getStatus().equals(Lot.RESERVED)) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "This lot is reserved by " + selectedLot.getOwner().getName() + ".\n"
+                    + "Only the reserving client can complete the purchase.");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Lot is already sold.");
+            }
         }
     }
 }
