@@ -279,7 +279,7 @@ public class SellLotFrame extends javax.swing.JFrame {
             return;
         }
 
-        int blockNum = block.getSelectedIndex() + 1;
+        int blockNum = Integer.parseInt(((String) block.getSelectedItem()).split(" ")[1]);
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
 
         for (Lot l : b.getLots()) {
@@ -319,7 +319,7 @@ public class SellLotFrame extends javax.swing.JFrame {
         }
 
         try {
-            int blockNum = block.getSelectedIndex() + 1;
+            int blockNum = Integer.parseInt(((String) block.getSelectedItem()).split(" ")[1]);
             Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
             String lotText = (String) lot.getSelectedItem();
             int lotNum = Integer.parseInt(lotText.split(" ")[1]);
@@ -359,7 +359,7 @@ public class SellLotFrame extends javax.swing.JFrame {
             return;
         }
 
-        int blockNum = block.getSelectedIndex() + 1;
+        int blockNum = Integer.parseInt(((String) block.getSelectedItem()).split(" ")[1]);
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
 
         String lotText = (String) lot.getSelectedItem();

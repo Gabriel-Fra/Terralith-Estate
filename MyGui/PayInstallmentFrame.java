@@ -40,7 +40,7 @@ public class PayInstallmentFrame extends javax.swing.JFrame {
             return;
         }
 
-        int blockNum = cmbBlock.getSelectedIndex() + 1;
+        int blockNum = Integer.parseInt(((String) cmbBlock.getSelectedItem()).split(" ")[1]);
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
 
         for (Lot l : b.getLots()) {
@@ -72,7 +72,7 @@ public class PayInstallmentFrame extends javax.swing.JFrame {
             return;
         }
 
-        int blockNum = cmbBlock.getSelectedIndex() + 1;
+        int blockNum = Integer.parseInt(((String) cmbBlock.getSelectedItem()).split(" ")[1]);
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
         String lotText = (String) cmbLot.getSelectedItem();
         int lotNum = Integer.parseInt(lotText.split(" ")[1]);
@@ -110,7 +110,7 @@ public class PayInstallmentFrame extends javax.swing.JFrame {
             return;
         }
 
-        int blockNum = cmbBlock.getSelectedIndex() + 1;
+        int blockNum = Integer.parseInt(((String) cmbBlock.getSelectedItem()).split(" ")[1]);
         Block b = Agency.getInstance().getMainProperty().getBlock(blockNum);
         String lotText = (String) cmbLot.getSelectedItem();
         int lotNum = Integer.parseInt(lotText.split(" ")[1]);
